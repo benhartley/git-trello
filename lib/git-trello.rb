@@ -38,7 +38,7 @@ class GitHook
       #Following requries quite a bit of testing in case of merging
       until commit.nil? || commit.sha == old_sha
         # Figure out the card short id
-        match = commit.message.match(/((case|card|close|fix)e?s? \D?([0-9]+))/i)
+        match = commit.message.match(/((case|card|close|fix)e?s? trello-([0-9]+))/i)
         next unless match and match[3].to_i > 0
 
         puts "Trello: Commenting on the card ##{match[3].to_i}"
